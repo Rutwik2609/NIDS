@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\INTRUSION\nids\app.py", line 70, in results
+    predict = model.predict([np.array(list(data.values()))])
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\linear_model\_base.py", line 374, in predict
+    scores = self.decision_function(X)
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\linear_model\_base.py", line 351, in decision_function
+    X = validate_data(self, X, accept_sparse="csr", reset=False)
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\utils\validation.py", line 2944, in validate_data
+    out = check_array(X, input_name="X", **check_params)
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\utils\validation.py", line 1096, in check_array
+    raise ValueError(
+ValueError: dtype='numeric' is not compatible with arrays of bytes/strings.Convert your data to numeric values explicitly instead.
+127.0.0.1 - - [08/Feb/2025 00:58:44] "POST /results HTTP/1.1" 500 -
+127.0.0.1 - - [08/Feb/2025 00:58:49] "OPTIONS /results HTTP/1.1" 200 -
+[2025-02-08 00:58:49,260] ERROR in app: Exception on /results [POST]
+Traceback (most recent call last):
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\INTRUSION\nids\app.py", line 70, in results
+    predict = model.predict([np.array(list(data.values()))])
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\linear_model\_base.py", line 374, in predict
+    scores = self.decision_function(X)
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\linear_model\_base.py", line 351, in decision_function
+    X = validate_data(self, X, accept_sparse="csr", reset=False)
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\utils\validation.py", line 2944, in validate_data
+    out = check_array(X, input_name="X", **check_params)
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\utils\validation.py", line 1096, in check_array
+    raise ValueError(
+ValueError: dtype='numeric' is not compatible with arrays of bytes/strings.Convert your data to numeric values explicitly instead.
+127.0.0.1 - - [08/Feb/2025 00:58:49] "POST /results HTTP/1.1" 500 -
+PS D:\INTRUSION\nids> python app.py
+C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\base.py:380: InconsistentVersionWarning: Trying to unpickle estimator LogisticRegression from version 0.22.1 when using version 1.6.1. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+127.0.0.1 - - [08/Feb/2025 01:08:04] "OPTIONS /predict HTTP/1.1" 200 -
+[2025-02-08 01:08:04,568] ERROR in app: Exception on /predict [POST]
+Traceback (most recent call last):
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\RUTWIK\AppData\Local\Programs\Python\Python39\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\INTRUSION\nids\app.py", line 32, in predict
+    int_features = [float(x) for x in data.values()]
+  File "D:\INTRUSION\nids\app.py", line 32, in <listcomp>
+    int_features = [float(x) for x in data.values()]
+ValueError: could not convert string to float: 's0'
+127.0.0.1 - - [08/Feb/2025 01:08:04] "POST /predict HTTP/1.1" 500 -
