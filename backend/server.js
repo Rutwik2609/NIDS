@@ -1,48 +1,37 @@
 import express from 'express';
 import cors from 'cors';
-import {spawn} from 'child_process';
 import morgan from 'morgan';
+import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+
+
+import { connectDB } from './db/db.js';
+import userRoutes from './routes/user.route.js';
+import predictRoutes from './routes/predict.route.js';
 
 const app = express();
 const PORT = 5000;
 
-app.use(cors());
+dotenv.config();
+
+app.use(
+    cors({
+      origin: "http://localhost:5174", // Explicitly allow frontend URL
+      credentials: true, // Allow cookies and authentication headers
+    })
+  );
+
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(cookieParser());
 
-app.post('/predict', (req, res) => {
-    try {
-        const data = req.body;
-        
-        // Validate input fields
-        if (!data) {
-            return res.status(400).json({ error: 'Invalid input data' });
-        }
+app.use('/api/v1/auth',userRoutes);
+app.use('/api/v1/predict',predictRoutes);
 
-        const pythonProcess = spawn('python', ['predict.py', JSON.stringify(data)]);
 
-        let result = '';
-        pythonProcess.stdout.on('data', (data) => {
-            result += data.toString();
-        });
 
-        pythonProcess.stderr.on('data', (data) => {
-            console.error(`Error: ${data}`);
-        });
-
-        pythonProcess.on('close', (code) => {
-            if (code !== 0) {
-                return res.status(500).json({ error: 'Prediction failed' });
-            }
-            res.json(JSON.parse(result));
-        });
-    } catch (error) {
-        console.log('Error:', error);
-        
-        res.status(500).json({ error: error.message });
-    }
-});
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    connectDB();
+    console.log(`Server running on http://localhost:${PORT}`);
 });
