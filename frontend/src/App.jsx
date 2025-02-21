@@ -196,6 +196,7 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/auth/Login.jsx";
 import Register from "./pages/auth/Register.jsx";
 import Predict from "./pages/predict/Predict.jsx";
+import Results from "./pages/results.jsx";
 
 const App = () => {
   const { data: authUser, isLoading } = useQuery({
@@ -224,11 +225,12 @@ const App = () => {
   }
 
   return (
-    <div className="flex mx-auto">
+    <div className="min-h-screen">
       <Routes>
         {/* Routes for authenticated users */}
         <Route path="/" element={authUser ? <Home /> : <Navigate to="/login" />} />
         <Route path="/predict" element={authUser ? <Predict /> : <Navigate to="/login" />} />
+        <Route path="/results" element={authUser ? <Results /> : <Navigate to="/login" />} />
 
         {/* Routes for non-authenticated users */}
         <Route path="/login" element={!authUser ? <Login /> : <Navigate to="/" />} />
